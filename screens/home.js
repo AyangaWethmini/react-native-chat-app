@@ -57,11 +57,23 @@ const HomeScreen = () => {
       />
 
 
+
       <View style={styles.fabContainer}>
-        <View style={styles.newChatBtn}>
-          <Text style={styles.newChat}>+</Text>
-        </View>
+        <TouchableOpacity onPress={() => {navigation.navigate("Contacts")}}>
+          <View style={styles.newChatBtn}>
+            <Text style={styles.newChat}>+</Text>
+          </View>
+        </TouchableOpacity>
       </View>
+
+      <View style={styles.tempButtonRow}>
+      <TouchableOpacity style={styles.tempButton} onPress={() => {navigation.navigate("Contacts")}}>
+        <Text style={styles.tempButtonText}>Register</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.tempButton} onPress={() => {navigation.navigate("Contacts")}}>
+        <Text style={styles.tempButtonText}>Verify</Text>
+      </TouchableOpacity>
+    </View>
 
     </View>
   );
@@ -71,6 +83,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#181A20',
+    marginBottom: 50
     
   },
   header: {
@@ -150,6 +163,23 @@ const styles = StyleSheet.create({
   time: {
     fontSize: 12,
     color: '#d9d7d7ff',
+  },
+  tempButtonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  tempButton: {
+    backgroundColor: '#444',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+  },
+  tempButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
