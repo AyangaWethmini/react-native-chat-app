@@ -70,7 +70,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#030303',
+    backgroundColor: '#181A20',
     
   },
   header: {
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#222121ff',
-    backgroundColor: '#030303',
+    backgroundColor: '#181A20',
     alignItems: 'center',
   },
   avatar: {

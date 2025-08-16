@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 import SplashScreen from "./screens/splash";
 import HomeScreen from "./screens/home";
+import ChatDetailScreen from './screens/chat';
 
 const Stack = createStackNavigator();
 
@@ -14,10 +15,9 @@ function App() {
         initialRouteName="Splash"
         screenOptions={{
           headerStyle: { 
-            backgroundColor: '#030303', 
+            backgroundColor: '#131313ff', 
             height: 120, 
-            borderBottomWidth: 1, 
-            borderBottomColor: '#fff' 
+             
           },
           headerTintColor: '#fff',
           headerTitleStyle: { fontSize: 26 }
@@ -25,6 +25,8 @@ function App() {
       >
         <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ title: "My Chats" }} />
+        <Stack.Screen name="ChatDetail" component={ChatDetailScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
