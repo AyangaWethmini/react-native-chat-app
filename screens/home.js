@@ -67,10 +67,10 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.tempButtonRow}>
-      <TouchableOpacity style={styles.tempButton} onPress={() => {navigation.navigate("Contacts")}}>
+      <TouchableOpacity style={styles.tempButton} onPress={() => {navigation.navigate("Register")}}>
         <Text style={styles.tempButtonText}>Register</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.tempButton} onPress={() => {navigation.navigate("Contacts")}}>
+      <TouchableOpacity style={styles.tempButton} onPress={() => {navigation.navigate("Verify")}}>
         <Text style={styles.tempButtonText}>Verify</Text>
       </TouchableOpacity>
     </View>

@@ -5,6 +5,8 @@ import SplashScreen from "./screens/splash";
 import HomeScreen from "./screens/home";
 import ChatDetailScreen from './screens/chat';
 import ContactScreen from './screens/contacts';
+import RegisterScreen from './auth/register';
+import VerifyScreen from './auth/verify'
 
 const Stack = createStackNavigator();
 
@@ -28,8 +30,8 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen} options={{ title: "My Chats" }} />
         <Stack.Screen name="ChatDetail" component={ChatDetailScreen} />
         <Stack.Screen name="Contacts" component={ContactScreen} options={{title : "Contacts"}}/>
-        <Stack.Screen name="Contacts" component={ContactScreen} options={{title : "Contacts"}}/>
-        <Stack.Screen name="Contacts" component={ContactScreen} options={{title : "Contacts"}}/>
+        <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown : false}}/>
+        <Stack.Screen name="Verify" component={VerifyScreen} options={{headerShown : false}}/>
 
 
       </Stack.Navigator>

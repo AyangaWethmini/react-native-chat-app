@@ -2,131 +2,117 @@ import React from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
+import { Picker } from '@react-native-picker/picker';
 
 
-const RegisterScreen = () => {
+const VerifyScreen = () => {
   const navigation = useNavigation();
   const [search , setSearch] = useState('');
 
 
-  return (
+const [contactNumber, setContactNumber] = useState('');
+const [countryCode, setCountryCode] = useState('+1'); // default country code
+
+const countryCodes = [
+    { code: '+1', label: 'US/CA' },
+    { code: '+44', label: 'UK' },
+    { code: '+91', label: 'IN' },
+    { code: '+61', label: 'AU' },
+    { code: '+81', label: 'JP' },
+    { code: '+49', label: 'DE' },
+    { code: '+33', label: 'FR' },
+    { code: '+39', label: 'IT' },
+    { code: '+34', label: 'ES' },
+    { code: '+7', label: 'RU' },
+    { code: '+86', label: 'CN' },
+    { code: '+82', label: 'KR' },
+    { code: '+55', label: 'BR' },
+    { code: '+27', label: 'ZA' },
+    { code: '+62', label: 'ID' },
+    { code: '+234', label: 'NG' },
+    { code: '+20', label: 'EG' },
+    { code: '+966', label: 'SA' },
+    { code: '+971', label: 'AE' },
+    { code: '+63', label: 'PH' },
+    { code: '+94', label: 'LK' },
+    // Add more as needed
+];
+
+return (
     <View style={styles.container}>
-
+        <Text style={styles.heading}>Register</Text>
         <TextInput
-        style={styles.searchBar}
-        placeholder="Search contacts..."
-        placeholderTextColor="#aaa"
-        value={search}
-        onChangeText={setSearch}
-      />
+            style={styles.inputFeild}
+            placeholder="Name"
+            placeholderTextColor="#aaa"
+            value={search}
+            onChangeText={setSearch}
+        />
 
-      
-        <TextInput
-        style={styles.searchBar}
-        placeholder="Search contacts..."
-        placeholderTextColor="#aaa"
-        value={search}
-        onChangeText={setSearch}
-      />
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 15 }}>
+            <View style={{ borderRadius: 25, backgroundColor: '#23272e', marginRight: 10 }}>
+                <Picker
+                    selectedValue={countryCode}
+                    style={{ height: 50, width: 100, color: '#fff' }}
+                    dropdownIconColor="#fff"
+                    onValueChange={(itemValue) => setCountryCode(itemValue)}
+                >
+                    {countryCodes.map((item) => (
+                        <Picker.Item key={item.code} label={`${item.label} (${item.code})`} value={item.code} />
+                    ))}
+                </Picker>
+            </View>
+            <TextInput
+                style={[styles.inputFeild, { flex: 1, margin: 0 }]}
+                placeholder="Contact Number"
+                placeholderTextColor="#aaa"
+                keyboardType="phone-pad"
+                value={contactNumber}
+                onChangeText={setContactNumber}
+            />
 
-      
+            
+        </View>
+        <TouchableOpacity style={styles.button} onPress={() => { /* handle proceed action */ }}>
+                        <Text style={{color: '#fff', fontWeight: 'bold'}}>Register</Text>
+                    </TouchableOpacity>
     </View>
-  );
+);
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#181A20',
-    
-  },
-  searchBar: {
-    backgroundColor: '#23272e',
-    color: '#fff',
-    borderRadius: 25,
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    margin: 15,
-    fontSize: 16,
-  },
-  header: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    padding: 15,
-    color: '#333',
-  },
-  contact: {
-    flexDirection: 'row',
-    padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#222121ff',
-    backgroundColor: '#181A20',
-    alignItems: 'center',
-  },
-  avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    backgroundColor: '#ac274f',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 15,
-  },
-  avatarText: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  newChat : {
-    fontSize : 40
-  },
-  newChatBtn : {
-    width: 60,
-    height: 60,
-    borderRadius: 50,
-    backgroundColor: '#c8416aff',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 15,
-  },
-  fabContainer: {
-    position: 'absolute',
-    bottom: 100,
-    right: 30,
-    zIndex: 10,
-  },
-  chatInfo: {
-    flex: 1,
-  },
-  contactName: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#fffdfdff',
-  },
-  lastMessage: {
-    fontSize: 14,
-    color: '#d9d7d7ff',
-    marginTop: 5,
-  },
-  unreadBadge: {
-    backgroundColor: '#e53935',
-    minWidth: 24,
-    height: 24,
-    borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 6,
-    marginLeft: 8,
-  },
-  unreadText: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  time: {
-    fontSize: 12,
-    color: '#d9d7d7ff',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#181A20',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    inputFeild: {
+        backgroundColor: '#23272e',
+        color: '#fff',
+        borderRadius: 25,
+        paddingHorizontal: 20,
+        paddingVertical: 15,
+        margin: 15,
+        fontSize: 16,
+        width : 350
+    },
+    heading : {
+        color: "#fff",
+        fontWeight : 200,
+        fontSize: 32,
+
+    },
+    button : {
+        backgroundColor: '#ac274f', 
+        padding: 15, 
+        borderRadius: 25, 
+        marginTop: 50, 
+        width: 200, 
+        alignItems: 'center'
+    }
+
+
 });
 
-export default RegisterScreen;
+export default VerifyScreen;
